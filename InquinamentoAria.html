@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="it">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Inquinamento dell'Aria</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #fff;
+      color: #222;
+      line-height: 1.6;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      padding: 4rem 2rem;
+      text-align: center;
+      background: linear-gradient(to right, #00c6ff, #0072ff);
+      color: white;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      background: #f8f9fa;
+      padding: 1rem;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+      flex-wrap: wrap;
+    }
+
+    nav a {
+      margin: 0.5rem 1rem;
+      color: #0072ff;
+      text-decoration: none;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #00c6ff;
+    }
+
+    section {
+      padding: 4rem 2rem;
+      max-width: 900px;
+      margin: auto;
+      animation: fadeInUp 1s ease;
+    }
+
+    h2 {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    ul, ol {
+      margin-left: 2rem;
+    }
+
+    canvas {
+      max-width: 100%;
+      margin-top: 2rem;
+    }
+
+    .video-container, .iframe-container {
+      position: relative;
+      padding-bottom: 56.25%;
+      height: 0;
+      overflow: hidden;
+      margin-top: 2rem;
+    }
+
+    .video-container iframe, .iframe-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    img.fullwidth {
+      width: 100%;
+      margin: 2rem 0;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    blockquote {
+      background: #f0f0f0;
+      padding: 1rem;
+      border-left: 5px solid #0072ff;
+      margin: 2rem 0;
+      font-style: italic;
+    }
+
+    .fun-fact {
+      background: #e8f4ff;
+      padding: 1rem;
+      margin: 2rem 0;
+      border-left: 4px solid #00c6ff;
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      padding: 2rem;
+      background: #0072ff;
+      color: white;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+      to {
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Inquinamento dell'Aria</h1>
+  </header>
+
+  <nav>
+    <a href="#cos-e">Cos'è</a>
+    <a href="#cause">Cause</a>
+    <a href="#effetti">Effetti</a>
+    <a href="#conseguenze">Conseguenze</a>
+    <a href="#soluzioni">Soluzioni</a>
+    <a href="#curiosita">Curiosità</a>
+    <a href="#grafici">Grafici</a>
+    <a href="#video">Video</a>
+    <a href="#mappa">Mappa Live</a>
+    <a href="#citazioni">Citazioni</a>
+  </nav>
+
+  <section id="cos-e">
+    <h2>Cos'è l'inquinamento dell'aria</h2>
+    <p>L'inquinamento atmosferico è la presenza di sostanze nocive nell'atmosfera che possono avere effetti dannosi per la salute umana, gli ecosistemi e il clima. Si tratta di una problematica globale che coinvolge tutti i continenti e che deriva sia da cause naturali che da attività antropiche. Le fonti principali includono la combustione di combustibili fossili, l'agricoltura intensiva, le attività industriali e il traffico urbano. L'inquinamento dell'aria non si vede sempre ad occhio nudo, ma le sue conseguenze sono misurabili e tangibili. Ridurre l’inquinamento atmosferico è una delle sfide più importanti del nostro tempo per garantire la sostenibilità del pianeta e la qualità della vita delle generazioni future.</p>
+    <img src="https://energit.it/wp-content/uploads/shutterstock_1721153281-1.jpg" class="fullwidth">
+  </section>
+
+  <section id="cause">
+    <h2>Cause principali</h2>
+    <p>Le cause dell'inquinamento atmosferico sono molteplici e spesso interconnesse. Tra le più importanti troviamo la combustione di carburanti fossili come petrolio, carbone e gas naturale, che rilascia nell'atmosfera sostanze inquinanti come ossidi di azoto, biossido di zolfo, monossido di carbonio e particolato fine (PM10 e PM2.5). Le industrie e i processi produttivi intensivi generano ulteriori emissioni, così come l'agricoltura intensiva, che immette in aria grandi quantità di ammoniaca e metano. Anche il riscaldamento domestico, i roghi agricoli e gli incendi boschivi contribuiscono al deterioramento della qualità dell'aria. Le città, con il loro traffico congestionato e l'urbanizzazione crescente, rappresentano i punti più critici di emissioni nocive.</p>
+  </section>
+
+  <section id="effetti">
+    <h2>Effetti sulla salute</h2>
+    <p>L'esposizione all'inquinamento dell'aria ha effetti gravi sulla salute umana. Le particelle sottili possono penetrare nei polmoni e nel sistema circolatorio, provocando patologie respiratorie croniche, asma, bronchiti e, nei casi più gravi, tumori ai polmoni. Anche il sistema cardiovascolare può risentirne, aumentando il rischio di infarti e ictus. I soggetti più vulnerabili sono i bambini, gli anziani e le persone con patologie preesistenti. L'Organizzazione Mondiale della Sanità stima che ogni anno l'inquinamento atmosferico causi milioni di morti premature. I danni alla salute non si fermano ai soli effetti fisici: anche disturbi cognitivi, affaticamento e problemi del sonno possono essere legati alla qualità dell’aria che respiriamo ogni giorno.</p>
+    <img src="https://www.arieggiare.it/wp-content/uploads/2016/10/inquinamento-atmosferico-effetti-sulla-salute-e1476086360478.jpg" class="fullwidth">
+  </section>
+
+  <section id="conseguenze">
+    <h2>Conseguenze ambientali e climatiche</h2>
+    <p>L'inquinamento dell'aria ha un impatto devastante anche sull'ambiente naturale. Le sostanze chimiche disperse in atmosfera contribuiscono alla formazione delle piogge acide, che danneggiano foreste, laghi e suoli. Inoltre, alcuni inquinanti, come il metano e il black carbon, sono potenti gas serra che accelerano il cambiamento climatico. Questo influisce sull’equilibrio degli ecosistemi, sulla biodiversità e sul ciclo dell’acqua. Le coltivazioni agricole possono risentire della presenza di ozono troposferico, che riduce la fotosintesi e quindi la produttività delle piante. Anche il patrimonio culturale non è immune: monumenti, edifici storici e opere d’arte sono soggetti a deterioramento a causa della deposizione di agenti corrosivi presenti nell’aria.</p>
+  </section>
+
+  <section id="soluzioni">
+    <h2>Soluzioni e azioni possibili</h2>
+    <p>Affrontare il problema dell'inquinamento atmosferico richiede azioni coordinate a livello locale, nazionale e internazionale. Tra le strategie più efficaci ci sono l'adozione di politiche per la riduzione delle emissioni industriali, la promozione di energie rinnovabili, l'efficienza energetica e l'elettrificazione della mobilità. Ogni cittadino può contribuire adottando uno stile di vita più sostenibile: usare i mezzi pubblici, ridurre l'uso dell’auto privata, scegliere prodotti a km zero e differenziare correttamente i rifiuti. Le amministrazioni possono investire in trasporti pubblici puliti, piste ciclabili e zone verdi. L'educazione ambientale è fondamentale per sensibilizzare le nuove generazioni e creare una cultura della responsabilità ambientale.</p>
+    <div class="fun-fact">Lo sapevi? Se ogni famiglia italiana piantasse un albero all'anno, si potrebbero assorbire oltre 20 milioni di kg di CO₂!</div>
+  </section>
+
+  <section id="curiosita">
+    <h2>Curiosità</h2>
+    <p>Non tutti sanno che esistono piante capaci di purificare naturalmente l’aria degli ambienti interni. La NASA, in uno studio condotto negli anni ’80, ha identificato alcune specie vegetali in grado di assorbire sostanze inquinanti come benzene, formaldeide e tricloroetilene. Tra le più efficaci ci sono la Sansevieria, il Pothos, il Ficus e il Giglio della pace. Inserire queste piante nelle abitazioni o negli uffici può migliorare la qualità dell’aria e ridurre lo stress. Inoltre, l’aria indoor può essere fino a cinque volte più inquinata di quella esterna, quindi l’attenzione a questi dettagli può avere un impatto significativo sulla nostra salute e sul benessere generale.</p>
+    <img src="https://staticohga.akamaized.net/wp-content/uploads/sites/24/2022/02/iStock-1247359811.jpg" alt="Sansevieria" class="fullwidth">
+  </section>
+
+  <section id="grafici">
+    <h2>Grafico PM2.5 per città</h2>
+    <p>Le polveri fini, PM 2,5, sono delle particelle microscopiche presenti nell'aria che respiriamo ed altamente nocive per la salute. Vengono prodotte principalemente dal traffico veicolare, sia dei mezzi diesel che benzina. Dall'uso di combustibili solidi per il riscaldamento domestico (carbone, legna e gasolio) residui dell'usura del manto stradale e dai freni e delle gomme delle vetture.<p>
+    <canvas id="pmChart" width="800" height="400"></canvas>
+  </section>
+
+  <section id="video">
+  <h2>Video informativo</h2>
+  <div class="video-container" style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden;">
+    <iframe src="https://www.youtube.com/embed/AQBm5C8M7zE"
+            title="Video informativo sull'ambiente"
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;"
+            frameborder="0"
+            allowfullscreen>
+    </iframe>
+  </div>
+</section>
+
+  <section id="mappa">
+    <h2>Mappa Live della qualità dell'aria</h2>
+    <p>Visualizza la qualità dell'aria in tempo reale tramite il sito IQAir:</p>
+    <p><a href="https://www.iqair.com/world-air-quality" target="_blank" rel="noopener noreferrer">Clicca qui per aprire la mappa live</a></p>
+  </section>
+
+
+  <section id="notizie">
+  <h2>Notizie recenti sull'inquinamento dell'aria</h2>
+  <div class="iframe-container">
+    <iframe src="https://www.repubblica.it/green-and-blue/2025/03/11/news/iqair_inquinamento_atmosferico_solo_7_paesi_al_mondo_sotto_livello_di_guardia_oms-424055812/" title="Notizia Repubblica" loading="lazy"></iframe>
+    
+  </div>
+</section>
+
+
+  <section id="citazioni">
+    <h2>Citazioni</h2>
+    <blockquote>“L’aria pulita è un diritto umano fondamentale.” — Ban Ki-moon</blockquote>
+    <blockquote>“L’inquinamento atmosferico è il nuovo tabacco.” — Tedros Adhanom Ghebreyesus</blockquote>
+    <blockquote>“Quella umana è l'unica specie al mondo ad aver inquinato la Terra ed è l'unica che può ripulirla.” — Dennis Weaver</blockquote>
+    <blockquote>““I veleni abbracceranno la Terra come un focoso amante. E nel mortale abbraccio, i cieli avranno l'alito della morte e le fonti non daranno più che acque amare e molte di queste acque saranno più tossiche del sangue marcio del serpente. Gli uomini moriranno di acqua e di aria, ma si dirà che sono morti di cuore e di reni.”” — Rasputin</blockquote>
+  </section>
+
+  <footer>
+    <p>Lavoro di scienze - Vittorini - Giorgio Ascari</p>
+  </footer>
+
+  <script>
+    const ctx = document.getElementById('pmChart').getContext('2d');
+    const pmChart = new Chart(ctx, {
+      type: 'bar',
+      data: {
+        labels: ['Milano', 'Roma', 'Napoli', 'Torino', 'Firenze'],
+        datasets: [{
+          label: 'Livelli PM2.5 (µg/m³)',
+          data: [35, 30, 40, 28, 25],
+          backgroundColor: 'rgba(0, 114, 255, 0.6)',
+          borderColor: 'rgba(0, 114, 255, 1)',
+          borderWidth: 1
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: {
+          legend: {
+            display: false
+          }
+        },
+        scales: {
+          y: {
+            beginAtZero: true
+          }
+        }
+      }
+    });
+  </script>
+</body>
+
+</html>
+
+
